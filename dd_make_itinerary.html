@@ -15,19 +15,19 @@
     <h2>Select your itinerary parameters.</h2>
 
     <form action="dd_create_profile.html" method="POST">
-
+<!-- location -->
         <div>
             <label for="location"><strong>Location:</strong></label>
             <input type="text" id="coords" name="coords" placeholder="Big City, USA" required>
         </div>
         <br>
-
+<!-- number of 'stops' or itinerary 'items' -->
         <div>
             <label for="stops"><strong>How many points of interest:</strong></label>
             <input type="number" id="stops" name="stops" min="0" max="9" value="1" required>
         </div>
         <br>
-
+<!-- cost preferences -->
         <div>
             <label for="cost"><strong>What is the maximum you would be willing to spend during each stop?</strong></label>
             <br>
@@ -44,54 +44,54 @@
             <label for="$$$$"> $$$$ (each stop could be a considerable cost)</label>
         </div>
         <br>
-
+<!-- interests checkboxes -->
         <div>
             <label><strong>Select your interests:</strong></label>
             <br>
             <label for="interests">Visual Arts</label>
-            <input type="checkbox" id="art" name="art">
+            <input type="checkbox" id="art" name="art" data-interest="art">
             <br>
             <label for="interests">Music</label>
-            <input type="checkbox" id="music" name="music">
+            <input type="checkbox" id="music" name="music" data-interest="music">
             <br>
             <label for="interests">Nature/Outdoors</label>
-            <input type="checkbox" id="nature" name="nature">
+            <input type="checkbox" id="nature" name="nature" data-interest="nature">
             <br>
             <label for="interests">Gaming</label>
-            <input type="checkbox" id="gaming" name="gaming">
+            <input type="checkbox" id="gaming" name="gaming" data-interest="gaming">
             <br>
             <label for="interests">Sports</label>
-            <input type="checkbox" id="sports" name="sports">
+            <input type="checkbox" id="sports" name="sports" data-interest="sports">
             <br>
             <label for="interests">Night Life</label>
-            <input type="checkbox" id="night" name="night">
+            <input type="checkbox" id="night" name="night" data-interest="night">
             <br>
             <label for="interests">History</label>
-            <input type="checkbox" id="history" name="history">
+            <input type="checkbox" id="history" name="history" data-interest="history">
             <br>
             <label for="interests">Science/Technology</label>
-            <input type="checkbox" id="science" name="science">
+            <input type="checkbox" id="science" name="science" data-interest="science">
             <br>
             <label for="interests">Culture</label>
-            <input type="checkbox" id="culture" name="culture">
+            <input type="checkbox" id="culture" name="culture" data-interest="culture">
             <br>
             <label for="interests">Fashion</label>
-            <input type="checkbox" id="fashion" name="fashion">
+            <input type="checkbox" id="fashion" name="fashion" data-interest="fashion">
             <br>
             <label for="interests">Books</label>
-            <input type="checkbox" id="books" name="books">
+            <input type="checkbox" id="books" name="books" data-interest="books">
             <br>
             <label for="interests">Movies/Film</label>
-            <input type="checkbox" id="movies" name="movies">
+            <input type="checkbox" id="movies" name="movies" data-interest="movies">
             <br>
             <label for="interests">Health/Wellness</label>
-            <input type="checkbox" id="health" name="health">
+            <input type="checkbox" id="health" name="health" data-interest="health">
             <br>
             <label for="interests">Food</label>
-            <input type="checkbox" id="food" name="food">
+            <input type="checkbox" id="food" name="food" data-interest="food">
             <br>
             <label for="interests">Events</label>
-            <input type="checkbox" id="events" name="events">
+            <input type="checkbox" id="events" name="events" data-interest="events">
         </div>
         <div>
             <input type="submit">
@@ -99,4 +99,31 @@
         </div>
     </form>
 </body>
+<script>
+    window.addEventListener("DOMContentLoaded", function(e) {
+        const selectedInterests = document.querySelectorAll("input[data-interest]");
+
+        selectedInterests.forEach(function(input){
+
+            input.addEventListener("click", function(e){
+                const checkbox = e.currentTarget;
+
+                const interest = checkbox.getAttribute("data-interest");
+
+                interestArray = [];
+
+                if (checkbox.value = true) {
+
+                    interestArray.push(interest);
+                    console.log(interestArray);
+
+                }
+
+                localStorage.setItem("interests", interestArray);
+
+            });
+
+        });
+    });
+</script>
 </html>
