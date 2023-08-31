@@ -94,14 +94,19 @@
             <input type="checkbox" id="events" name="events" data-interest="events">
         </div>
         <div>
-            <input type="submit">
-            <input type="reset">
+            <input type="submit" id="submit">
+            <input type="reset" id="reset">
         </div>
     </form>
 </body>
 <script>
     window.addEventListener("DOMContentLoaded", function(e) {
+
+        const submit = document.getElementById("submit");
+
         const selectedInterests = document.querySelectorAll("input[data-interest]");
+
+        const interestArray = [];
 
         selectedInterests.forEach(function(input){
 
@@ -110,8 +115,6 @@
 
                 const interest = checkbox.getAttribute("data-interest");
 
-                interestArray = [];
-
                 if (checkbox.value = true) {
 
                     interestArray.push(interest);
@@ -119,10 +122,19 @@
 
                 }
 
-                localStorage.setItem("interests", interestArray);
-
             });
 
+            return interestArray;
+
+        });
+
+        submit.addEventListener("click", function(e){
+
+            localStorage.setItem("interests", interestArray);
+
+            const goToProfile = window.location.href.replace("dd_make_itinerary.html", "dd_user_profile.html");
+
+            window.location.href = goToProfile;
         });
     });
 </script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DODO User Profile</title>
+</head>
+<body>
+    <header>
+        <a href="dd_sitemap.html">Sitemap</a>
+
+    </header>
+    <h1>Welcome to your profile</h1>
+    <ul class="interests">
+
+    </ul>
+    
+</body>
+<script>
+    window.addEventListener("DOMContentLoaded", function(load){
+        
+        const userInterests = localStorage.getItem("interests");
+
+        console.log(userInterests);
+    })
+</script>
+</html>
