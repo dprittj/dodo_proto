@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <a href="dd_sitemap.html">Sitemap</a>
+
+    </header>
+    <h1>Welcome</h1>
+
+    <h2>Select your itinerary parameters.</h2>
+
+    <form action="dd_create_profile.html" method="POST">
+
+        <div>
+            <label for="location"><strong>Location:</strong></label>
+            <input type="text" id="coords" name="coords" placeholder="Big City, USA" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="stops"><strong>How many points of interest:</strong></label>
+            <input type="number" id="stops" name="stops" min="0" max="9" value="1" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="cost"><strong>What is the maximum you would be willing to spend during each stop?</strong></label>
+            <br>
+            <input type="radio" id="$" name="cost" value="$">
+            <label for="$"> $ (each stop may require little to no cost)</label>
+            <br>
+            <input type="radio" id="$$" name="cost" value="$$">
+            <label for="$$"> $$ (each stop may require some small minimum)</label>
+            <br>
+            <input type="radio" id="$$$" name="cost" value="$$$">
+            <label for="$$$"> $$$ (each stop may require some cost)</label>
+            <br>
+            <input type="radio" id="$$$$" name="cost" value="$$$$">
+            <label for="$$$$"> $$$$ (each stop could be a considerable cost)</label>
+        </div>
+        <br>
+
+        <div>
+            <label><strong>Select your interests:</strong></label>
+            <br>
+            <label for="interests">Visual Arts</label>
+            <input type="checkbox" id="art" name="art">
+            <br>
+            <label for="interests">Music</label>
+            <input type="checkbox" id="music" name="music">
+            <br>
+            <label for="interests">Nature/Outdoors</label>
+            <input type="checkbox" id="nature" name="nature">
+            <br>
+            <label for="interests">Gaming</label>
+            <input type="checkbox" id="gaming" name="gaming">
+            <br>
+            <label for="interests">Sports</label>
+            <input type="checkbox" id="sports" name="sports">
+            <br>
+            <label for="interests">Night Life</label>
+            <input type="checkbox" id="night" name="night">
+            <br>
+            <label for="interests">History</label>
+            <input type="checkbox" id="history" name="history">
+            <br>
+            <label for="interests">Science/Technology</label>
+            <input type="checkbox" id="science" name="science">
+            <br>
+            <label for="interests">Culture</label>
+            <input type="checkbox" id="culture" name="culture">
+            <br>
+            <label for="interests">Fashion</label>
+            <input type="checkbox" id="fashion" name="fashion">
+            <br>
+            <label for="interests">Books</label>
+            <input type="checkbox" id="books" name="books">
+            <br>
+            <label for="interests">Movies/Film</label>
+            <input type="checkbox" id="movies" name="movies">
+            <br>
+            <label for="interests">Health/Wellness</label>
+            <input type="checkbox" id="health" name="health">
+            <br>
+            <label for="interests">Food</label>
+            <input type="checkbox" id="food" name="food">
+            <br>
+            <label for="interests">Events</label>
+            <input type="checkbox" id="events" name="events">
+        </div>
+        <div>
+            <input type="submit">
+            <input type="reset">
+        </div>
+    </form>
+</body>
+</html>
