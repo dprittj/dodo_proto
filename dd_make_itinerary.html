@@ -100,40 +100,84 @@
     </form>
 </body>
 <script>
+    // tells the DOM to run the interior code when the page has loaded
     window.addEventListener("DOMContentLoaded", function(e) {
 
+        // creates a variable container for the form submit button
         const submit = document.getElementById("submit");
 
-        const selectedInterests = document.querySelectorAll("input[data-interest]");
+        // creates a variable container for form inputs of data-interests type
+        const interestSelection = document.querySelectorAll("input[data-interest]");
 
+        // initializes an array for use in function below 
         const interestArray = [];
 
-        selectedInterests.forEach(function(input){
+        // loops through each interest using a callback function
+        interestSelection.forEach(function(input){
 
+            // click-event listener for interests
             input.addEventListener("click", function(e){
-                const checkbox = e.currentTarget;
 
-                const interest = checkbox.getAttribute("data-interest");
+                // creates variable container for a clicked checkbox
+                const selection = e.currentTarget;
 
-                if (checkbox.value = true) {
+                // creates variable containers to retrieve clicked checkbox's data-interest value and id value
+                const interest = selection.getAttribute("data-interest");
+                const interestId = selection.getAttribute("id");
 
-                    interestArray.push(interest);
+                if (interestArray.length === 0){
+                    interestArray.push(interestId);
                     console.log(interestArray);
+                    return interestArray;
+                } else {
+                        if (interestArray.includes(interestId)){
+                            const cut = interestArray.indexOf(interestId);
+                            interestArray.splice(cut, 1);
+                            console.log(interestArray);
+                            return interestArray;
+                        } else {
+                            interestArray.push(interestId);
+                            console.log(interestArray);
+                            return interestArray;
+                        };
+                        return interestArray;
+                };
 
-                }
-
+                return interestArray;
             });
-
-            return interestArray;
 
         });
 
+        function evalArray(newInterest){
+            if (interestArray.length == 0){
+                interestArray.push(newInterest);
+                console.log("First:" + interestArray);
+            } else {
+                for (const selection in interestArray){
+                    if (interestId == selection){
+                        console.log("This is the new interet's name: " + newInterest.name);
+                        const cut = interestArray.indexOf(newInterest);
+                        interestArray.splice(cut, 1);
+                        console.log("Spliced Array" + interestArray);
+                    } else {
+                        interestArray.push(newInterest);
+                        console.log("Else action" + interestArray);
+                    }
+                    return interestArray;
+                }
+            }
+        }
+
+        // creates submit button even listener
         submit.addEventListener("click", function(e){
 
+            // on click, local storage saves returned array from above function
             localStorage.setItem("interests", interestArray);
-
+            
+            // creates variable container that change URLs on submit
             const goToProfile = window.location.href.replace("dd_make_itinerary.html", "dd_user_profile.html");
 
+            // changes window to profile URL
             window.location.href = goToProfile;
         });
     });
