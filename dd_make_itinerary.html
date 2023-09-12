@@ -14,33 +14,36 @@
 
     <h2>Select your itinerary parameters.</h2>
 
-    <form action="dd_create_profile.html" method="POST">
+    <form action="dd_user_profile.html" method="POST">
 <!-- location -->
         <div>
             <label for="location"><strong>Location:</strong></label>
-            <input type="text" id="coords" name="coords" placeholder="Big City, USA" required>
+            <input type="text" id="coords" name="coords" placeholder="Big City, USA" data-location="location" required>
         </div>
         <br>
 <!-- number of 'stops' or itinerary 'items' -->
         <div>
             <label for="stops"><strong>How many points of interest:</strong></label>
-            <input type="number" id="stops" name="stops" min="0" max="9" value="1" required>
+            <input type="number" id="stops" name="stops" min="1" max="5" placeholder="1" data-stops="stops" required>
         </div>
         <br>
 <!-- cost preferences -->
         <div>
             <label for="cost"><strong>What is the maximum you would be willing to spend during each stop?</strong></label>
             <br>
-            <input type="radio" id="$" name="cost" value="$">
+            <input type="radio" id="0" name="cost" value="0" data-cost="0">
+            <label for="0"> No Preference</label>
+            <br>
+            <input type="radio" id="$" name="cost" value="$" data-cost="$">
             <label for="$"> $ (each stop may require little to no cost)</label>
             <br>
-            <input type="radio" id="$$" name="cost" value="$$">
+            <input type="radio" id="$$" name="cost" value="$$" data-cost="$$">
             <label for="$$"> $$ (each stop may require some small minimum)</label>
             <br>
-            <input type="radio" id="$$$" name="cost" value="$$$">
+            <input type="radio" id="$$$" name="cost" value="$$$" data-cost="$$$">
             <label for="$$$"> $$$ (each stop may require some cost)</label>
             <br>
-            <input type="radio" id="$$$$" name="cost" value="$$$$">
+            <input type="radio" id="$$$$" name="cost" value="$$$$" data-cost="$$$$">
             <label for="$$$$"> $$$$ (each stop could be a considerable cost)</label>
         </div>
         <br>
@@ -99,6 +102,7 @@
         </div>
     </form>
 </body>
+<!-- DOM/JS scripting -->
 <script>
     // tells the DOM to run the interior code when the page has loaded
     window.addEventListener("DOMContentLoaded", function(e) {
@@ -125,51 +129,56 @@
                 const interest = selection.getAttribute("data-interest");
                 const interestId = selection.getAttribute("id");
 
-                if (interestArray.length === 0){
-                    interestArray.push(interestId);
+                if (interestArray.includes(interestId)){
+                    const cut = interestArray.indexOf(interestId);
+                    interestArray.splice(cut, 1);
                     console.log(interestArray);
                     return interestArray;
                 } else {
-                        if (interestArray.includes(interestId)){
-                            const cut = interestArray.indexOf(interestId);
-                            interestArray.splice(cut, 1);
-                            console.log(interestArray);
-                            return interestArray;
-                        } else {
-                            interestArray.push(interestId);
-                            console.log(interestArray);
-                            return interestArray;
-                        };
-                        return interestArray;
+                    interestArray.push(interestId);
+                    console.log(interestArray);
+                    return interestArray;
                 };
-
                 return interestArray;
             });
-
         });
-
-        function evalArray(newInterest){
-            if (interestArray.length == 0){
-                interestArray.push(newInterest);
-                console.log("First:" + interestArray);
-            } else {
-                for (const selection in interestArray){
-                    if (interestId == selection){
-                        console.log("This is the new interet's name: " + newInterest.name);
-                        const cut = interestArray.indexOf(newInterest);
-                        interestArray.splice(cut, 1);
-                        console.log("Spliced Array" + interestArray);
-                    } else {
-                        interestArray.push(newInterest);
-                        console.log("Else action" + interestArray);
-                    }
-                    return interestArray;
-                }
-            }
-        }
 
         // creates submit button even listener
         submit.addEventListener("click", function(e){
+
+            const location = document.querySelector("input[data-location]");
+
+            const stops = document.querySelector("input[data-stops]");
+
+            const prices = document.querySelectorAll("input[data-cost]");
+
+            prices.forEach(function(p){
+
+                p.addEventListener("click", function(e){
+
+                    const selectedRange = e.currentTarget;
+                    const thisCost = selectedRange.getAttribute("value");
+
+                    return thisCost;
+                });
+            });
+
+            // prefSelection.forEach(function(input){
+
+            //     // const preference = prefSelection.getAttribute("data-preference");
+            //     const preference = e.currentTarget;
+            //     const container = preference.parentNode;
+            //     // const preferenceId = prefSelection.getAttribute("id");
+
+            const preferences = {
+                location: location.getAttribute("value"),
+                stops: stops.getAttribute("value"),
+                cost: thisCost
+            };
+
+                localStorage.setItem("preferences", JSON.stringify(preferences));
+
+            // });
 
             // on click, local storage saves returned array from above function
             localStorage.setItem("interests", interestArray);
@@ -180,6 +189,8 @@
             // changes window to profile URL
             window.location.href = goToProfile;
         });
+
     });
+
 </script>
 </html>
