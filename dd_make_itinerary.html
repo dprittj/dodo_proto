@@ -31,18 +31,23 @@
         <div>
             <label for="cost"><strong>What is the maximum you would be willing to spend during each stop?</strong></label>
             <br>
+
             <input type="radio" id="0" name="cost" value="0" data-cost="0">
             <label for="0"> No Preference</label>
             <br>
+
             <input type="radio" id="$" name="cost" value="$" data-cost="$">
             <label for="$"> $ (each stop may require little to no cost)</label>
             <br>
+
             <input type="radio" id="$$" name="cost" value="$$" data-cost="$$">
             <label for="$$"> $$ (each stop may require some small minimum)</label>
             <br>
+
             <input type="radio" id="$$$" name="cost" value="$$$" data-cost="$$$">
             <label for="$$$"> $$$ (each stop may require some cost)</label>
             <br>
+
             <input type="radio" id="$$$$" name="cost" value="$$$$" data-cost="$$$$">
             <label for="$$$$"> $$$$ (each stop could be a considerable cost)</label>
         </div>
@@ -148,40 +153,33 @@
 
             const location = document.querySelector("input[data-location]");
 
+            const locationValue = location.value;
+
             const stops = document.querySelector("input[data-stops]");
+
+            const stopsValue = stops.value;
 
             const prices = document.querySelectorAll("input[data-cost]");
 
-            prices.forEach(function(p){
-
-                p.addEventListener("click", function(e){
-
-                    const selectedRange = e.currentTarget;
-                    const thisCost = selectedRange.getAttribute("value");
-
-                    return thisCost;
-                });
-            });
-
-            // prefSelection.forEach(function(input){
-
-            //     // const preference = prefSelection.getAttribute("data-preference");
-            //     const preference = e.currentTarget;
-            //     const container = preference.parentNode;
-            //     // const preferenceId = prefSelection.getAttribute("id");
-
             const preferences = {
-                location: location.getAttribute("value"),
-                stops: stops.getAttribute("value"),
-                cost: thisCost
+                location: locationValue,
+                stops: stopsValue
             };
 
-                localStorage.setItem("preferences", JSON.stringify(preferences));
+            // prices.forEach(function(p){
+            //     p.addEventListener("click", function(e){
+            //         const selectedRange = e.currentTarget;
+            //         const thisCost = selectedRange.getAttribute("value");
 
+            //         return thisCost;
+
+            //     });
             // });
 
+            localStorage.setItem("preferences", JSON.stringify(preferences));
+
             // on click, local storage saves returned array from above function
-            localStorage.setItem("interests", interestArray);
+            localStorage.setItem("interests", JSON.stringify(interestArray));
             
             // creates variable container that change URLs on submit
             const goToProfile = window.location.href.replace("dd_make_itinerary.html", "dd_user_profile.html");

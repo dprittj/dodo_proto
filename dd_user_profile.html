@@ -11,9 +11,7 @@
 
     </header>
     <h1>Welcome to your profile</h1>
-    <ul class="interests">
-
-    </ul>
+    <h2>Your selections: </h2>
     
 </body>
 <script>
@@ -22,6 +20,10 @@
         const userInterests = localStorage.getItem("interests");
 
         console.log(userInterests);
+
+        const userPreferences = localStorage.getItem("preferences");
+
+        console.log(userPreferences);
     })
 </script>
 </html>
