@@ -19,36 +19,37 @@
         <div>
             <label for="location"><strong>Location:</strong></label>
             <input type="text" id="coords" name="coords" placeholder="Big City, USA" data-location="location" required>
+            <button name="locationbtn" id="locationbtn">Add this location</button>
         </div>
         <br>
 <!-- number of 'stops' or itinerary 'items' -->
         <div>
             <label for="stops"><strong>How many points of interest:</strong></label>
-            <input type="number" id="stops" name="stops" min="1" max="5" placeholder="1" data-stops="stops" required>
+            <input type="number" id="stops" name="stops" min="1" max="5" value="0" data-stops="stops" required>
         </div>
         <br>
 <!-- cost preferences -->
-        <div>
+        <div class="cost">
             <label for="cost"><strong>What is the maximum you would be willing to spend during each stop?</strong></label>
             <br>
 
-            <input type="radio" id="0" name="cost" value="0" data-cost="0">
+            <input type="radio" id="0" name="cost" value="0" data-cost="0" class="cost">
             <label for="0"> No Preference</label>
             <br>
 
-            <input type="radio" id="$" name="cost" value="$" data-cost="$">
+            <input type="radio" id="$" name="cost" value="$" data-cost="$" class="cost">
             <label for="$"> $ (each stop may require little to no cost)</label>
             <br>
 
-            <input type="radio" id="$$" name="cost" value="$$" data-cost="$$">
+            <input type="radio" id="$$" name="cost" value="$$" data-cost="$$" class="cost">
             <label for="$$"> $$ (each stop may require some small minimum)</label>
             <br>
 
-            <input type="radio" id="$$$" name="cost" value="$$$" data-cost="$$$">
+            <input type="radio" id="$$$" name="cost" value="$$$" data-cost="$$$" class="cost">
             <label for="$$$"> $$$ (each stop may require some cost)</label>
             <br>
 
-            <input type="radio" id="$$$$" name="cost" value="$$$$" data-cost="$$$$">
+            <input type="radio" id="$$$$" name="cost" value="$$$$" data-cost="$$$$" class="cost">
             <label for="$$$$"> $$$$ (each stop could be a considerable cost)</label>
         </div>
         <br>
@@ -112,6 +113,8 @@
     // tells the DOM to run the interior code when the page has loaded
     window.addEventListener("DOMContentLoaded", function(e) {
 
+// event variables
+
         // creates a variable container for the form submit button
         const submit = document.getElementById("submit");
 
@@ -120,6 +123,42 @@
 
         // initializes an array for use in function below 
         const interestArray = [];
+
+        // creates a variable for the button variable
+        const locationbtn = document.querySelector("#locationbtn");
+
+        // creates variable for stops number input
+        const stops = document.querySelector("input[data-stops]");
+
+        // creates variables for prices radio buttons input
+        const prices = document.querySelectorAll("input[data-cost]");
+
+        const costValue = prices.value;
+
+        // blank data object for user preferences
+        const preferences = {
+        location: "",
+        stops: "",
+        cost: ""
+        };
+
+// event listeners
+
+        // when user clicks add location button, location is added to user data object
+        locationbtn.addEventListener("click", function(e){
+            const location = document.querySelector("input[data-location]");
+            const locationValue = location.value;
+            preferences["location"]=locationValue;
+
+        });
+
+        prices.forEach(function(radio){
+            radio.addEventListener("click", function(e){
+                const priceSelection = e.currentTarget;
+                const costValue = priceSelection.value;
+                preferences["cost"] = costValue;
+                });
+            });
 
         // loops through each interest using a callback function
         interestSelection.forEach(function(input){
@@ -151,30 +190,14 @@
         // creates submit button even listener
         submit.addEventListener("click", function(e){
 
-            const location = document.querySelector("input[data-location]");
-
-            const locationValue = location.value;
-
-            const stops = document.querySelector("input[data-stops]");
-
+            // creates variable reading stops number value selected
             const stopsValue = stops.value;
 
-            const prices = document.querySelectorAll("input[data-cost]");
+            preferences["stops"] = stopsValue;
 
-            const preferences = {
-                location: locationValue,
-                stops: stopsValue
-            };
-
-            // prices.forEach(function(p){
-            //     p.addEventListener("click", function(e){
-            //         const selectedRange = e.currentTarget;
-            //         const thisCost = selectedRange.getAttribute("value");
-
-            //         return thisCost;
-
-            //     });
-            // });
+            const location = document.querySelector("input[data-location]");
+            const locationValue = location.value;
+            preferences["location"]=locationValue;
 
             localStorage.setItem("preferences", JSON.stringify(preferences));
 
