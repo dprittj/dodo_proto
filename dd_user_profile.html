@@ -11,19 +11,60 @@
 
     </header>
     <h1>Welcome to your profile</h1>
-    <h2>Your selections: </h2>
+    <h2 class="selections">Your selections: </h2>
     
 </body>
 <script>
     window.addEventListener("DOMContentLoaded", function(load){
         
-        const userInterests = localStorage.getItem("interests");
+        function addDiv(){
+            const newDiv = document.createElement("div");
+        };
 
+        function addDivWithAttr(attName, attValue, parent){
+            const newDiv = document.createElement("div");
+            const addAtt = newDiv.setAttribute(attName, attValue);
+            parent.append(newDiv);
+        }
+
+        function addLI(item, parent){
+            const newLI = document.createElement("li")
+            newLI.innerText(item);
+            parent.append(newLI);
+        }
+
+        function addULwithHeader(listName, itemList, parent){
+
+            const newList = document.createElement("ul");
+            newList.setAttribute("class", listName);
+            const addHead = document.createElement("h3")
+            addHead.innerText(listName);
+
+            itemList.forEach(addLI(item, newList));
+
+        }
+
+        // creates variable for parent element to use as parameter
+        const selectionsHead = document.querySelector(".selections");
+
+        // creates variable calling function to add div (new parent) for interests
+        const interestsDiv = addDivWithAttr("class", "interests", selectionsHead);
+
+        // creates variable calling function to add div (new parent) for preferences
+        const preferencesDiv = addDivWithAttr("class", "preferences", selectionsHead);
+
+        // interests retrieval container
+        const userInterests = localStorage.getItem("interests");
         console.log(userInterests);
 
+        // preferences retrieval container
         const userPreferences = localStorage.getItem("preferences");
-
         console.log(userPreferences);
+
+        addULwithHeader("Preferences", userPreferences, preferencesDiv);
+
+        addULwithHeader("Interests", userInterests, interestsDiv);
+
     })
 </script>
 </html>
