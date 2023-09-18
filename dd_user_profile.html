@@ -17,41 +17,29 @@
 <script>
     window.addEventListener("DOMContentLoaded", function(load){
         
-        function addDiv(){
-            const newDiv = document.createElement("div");
-        };
+        // function addDiv(){
+        //     const newDiv = document.createElement("div");
+        // };
 
-        function addDivWithAttr(attName, attValue, parent){
-            const newDiv = document.createElement("div");
-            const addAtt = newDiv.setAttribute(attName, attValue);
-            parent.append(newDiv);
-        }
+        // function addDivWithAttr(attName, attValue, parent){
+        //     const newDiv = document.createElement("div");
+        //     const addAtt = newDiv.setAttribute(attName, attValue);
+        //     parent.append(newDiv);
+        // }
 
-        function addLI(item, parent){
-            const newLI = document.createElement("li")
-            newLI.innerText(item);
-            parent.append(newLI);
-        }
+        // function addLI(item, parent){
+        //     const newLI = document.createElement("li");
+        //     newLI.innerText(item);
+        //     parent.append(newLI);
+        // }
 
-        function addULwithHeader(listName, itemList, parent){
-
-            const newList = document.createElement("ul");
-            newList.setAttribute("class", listName);
-            const addHead = document.createElement("h3")
-            addHead.innerText(listName);
-
-            itemList.forEach(addLI(item, newList));
-
-        }
-
-        // creates variable for parent element to use as parameter
-        const selectionsHead = document.querySelector(".selections");
-
-        // creates variable calling function to add div (new parent) for interests
-        const interestsDiv = addDivWithAttr("class", "interests", selectionsHead);
-
-        // creates variable calling function to add div (new parent) for preferences
-        const preferencesDiv = addDivWithAttr("class", "preferences", selectionsHead);
+        // function addULwithHeader(listName, itemList, parent){
+        //     const newList = document.createElement("ul");
+        //     newList.setAttribute("class", listName);
+        //     const addHead = document.createElement("h3");
+        //     addHead.innerText(listName);
+        //     itemList.forEach(addLI(item, newList));
+        // }
 
         // interests retrieval container
         const userInterests = localStorage.getItem("interests");
@@ -61,9 +49,34 @@
         const userPreferences = localStorage.getItem("preferences");
         console.log(userPreferences);
 
-        addULwithHeader("Preferences", userPreferences, preferencesDiv);
+        // creates variable for parent element to use as parameter
+        const selectionsHead = document.querySelector(".selections");
 
-        addULwithHeader("Interests", userInterests, interestsDiv);
+
+        const newDivInts = document.createElement("div");
+        const addAttInts = newDivInts.setAttribute("class", "interests");
+        selectionsHead.append(newDivInts);
+
+        const newList = document.createElement("ul");
+        newList.setAttribute("class", userInterests);
+        const addHead = document.createElement("h3");
+        // addHead.innerText(userInterests);
+
+
+        const newDivPrefs = document.createElement("div");
+        const addAttPrefs = newDivPrefs.setAttribute("class", "preferences");
+        selectionsHead.append(newDivPrefs);
+
+
+        // creates variable calling function to add div (new parent) for interests
+        // const interestsDiv = addDivWithAttr("class", "interests", selectionsHead);
+
+        // creates variable calling function to add div (new parent) for preferences
+        // const preferencesDiv = addDivWithAttr("class", "preferences", selectionsHead);
+
+        // addULwithHeader("Preferences", userPreferences, preferencesDiv);
+
+        // addULwithHeader("Interests", userInterests, interestsDiv);
 
     })
 </script>
