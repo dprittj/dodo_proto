@@ -1,197 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <header>
-        <a href="dd_sitemap.html">Sitemap</a>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="dd_itinerary_script.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href="dd_sitemap.html">Sitemap</a>
+        </header>
+        <h1>Welcome</h1>
+        <h2>Select your itinerary parameters.</h2>
 
-    </header>
-    <h1>Welcome</h1>
-
-    <h2>Select your itinerary parameters.</h2>
-
-    <form action="dd_user_profile.html" method="">
-        <!-- <form action="dd_user_profile.html" method="POST"> -->
-<!-- location -->
-        <div>
-            <label for="location"><strong>Location:</strong></label>
-            <input type="text" id="coords" name="coords" placeholder="Big City, USA" data-location="location" required>
-        </div>
-        <br>
-<!-- number of 'stops' or itinerary 'items' -->
-        <div>
-            <label for="stops"><strong>How many points of interest:</strong></label>
-            <input type="number" id="stops" name="stops" min="1" max="5" value="0" data-stops="stops" required>
-        </div>
-        <br>
-<!-- cost preferences -->
-        <div class="cost">
-            <label for="cost"><strong>What is the maximum you would be willing to spend during each stop?</strong></label>
+        <form action="dd_user_profile.html" method="">
+            <!-- <form action="dd_user_profile.html" method="POST"> -->
+    <!-- location -->
+            <div>
+                <label for="location"><strong>Location:</strong></label>
+                <input type="text" id="coords" name="coords" placeholder="Big City, USA" data-location="userLocation" required>
+            </div>
             <br>
-
-            <input type="radio" id="0" name="cost" value="0" data-cost="0" class="cost">
-            <label for="0"> No Preference</label>
+    <!-- number of 'stops' or itinerary 'items' -->
+            <div>
+                <label for="stops"><strong>How many points of interest:</strong></label>
+                <input type="number" id="stops" name="stops" min="1" max="5" value="0" data-stops="stops" required>
+            </div>
             <br>
+    <!-- cost preferences -->
+            <div class="cost">
+                <label for="cost"><strong>What is the maximum you would be willing to spend during each stop?</strong></label>
+                <br>
 
-            <input type="radio" id="$" name="cost" value="$" data-cost="$" class="cost">
-            <label for="$"> $ (each stop may require little to no cost)</label>
+                <input type="radio" id="0" name="cost" value="0" data-cost="0" class="cost">
+                <label for="0"> No Preference</label>
+                <br>
+
+                <input type="radio" id="$" name="cost" value="$" data-cost="$" class="cost">
+                <label for="$"> $ (each stop may require little to no cost)</label>
+                <br>
+
+                <input type="radio" id="$$" name="cost" value="$$" data-cost="$$" class="cost">
+                <label for="$$"> $$ (each stop may require some small minimum)</label>
+                <br>
+
+                <input type="radio" id="$$$" name="cost" value="$$$" data-cost="$$$" class="cost">
+                <label for="$$$"> $$$ (each stop may require some cost)</label>
+                <br>
+
+                <input type="radio" id="$$$$" name="cost" value="$$$$" data-cost="$$$$" class="cost">
+                <label for="$$$$"> $$$$ (each stop could be a considerable cost)</label>
+            </div>
             <br>
-
-            <input type="radio" id="$$" name="cost" value="$$" data-cost="$$" class="cost">
-            <label for="$$"> $$ (each stop may require some small minimum)</label>
-            <br>
-
-            <input type="radio" id="$$$" name="cost" value="$$$" data-cost="$$$" class="cost">
-            <label for="$$$"> $$$ (each stop may require some cost)</label>
-            <br>
-
-            <input type="radio" id="$$$$" name="cost" value="$$$$" data-cost="$$$$" class="cost">
-            <label for="$$$$"> $$$$ (each stop could be a considerable cost)</label>
-        </div>
-        <br>
-<!-- interests checkboxes -->
-        <div>
-            <label><strong>Select your interests:</strong></label>
-            <br>
-            <label for="interests">Visual Arts</label>
-            <input type="checkbox" id="art" name="art" data-interest="art" unchecked>
-            <br>
-            <label for="interests">Music</label>
-            <input type="checkbox" id="music" name="music" data-interest="music" unchecked>
-            <br>
-            <label for="interests">Nature/Outdoors</label>
-            <input type="checkbox" id="nature" name="nature" data-interest="nature" unchecked>
-            <br>
-            <label for="interests">Gaming</label>
-            <input type="checkbox" id="gaming" name="gaming" data-interest="gaming" unchecked>
-            <br>
-            <label for="interests">Sports</label>
-            <input type="checkbox" id="sports" name="sports" data-interest="sports" unchecked>
-            <br>
-            <label for="interests">Night Life</label>
-            <input type="checkbox" id="night" name="night" data-interest="night" unchecked>
-            <br>
-            <label for="interests">History</label>
-            <input type="checkbox" id="history" name="history" data-interest="history" unchecked>
-            <br>
-            <label for="interests">Science/Technology</label>
-            <input type="checkbox" id="science" name="science" data-interest="science" unchecked>
-            <br>
-            <label for="interests">Culture</label>
-            <input type="checkbox" id="culture" name="culture" data-interest="culture" unchecked>
-            <br>
-            <label for="interests">Fashion</label>
-            <input type="checkbox" id="fashion" name="fashion" data-interest="fashion" unchecked>
-            <br>
-            <label for="interests">Books</label>
-            <input type="checkbox" id="books" name="books" data-interest="books" unchecked>
-            <br>
-            <label for="interests">Movies/Film</label>
-            <input type="checkbox" id="movies" name="movies" data-interest="movies" unchecked>
-            <br>
-            <label for="interests">Health/Wellness</label>
-            <input type="checkbox" id="health" name="health" data-interest="health" unchecked>
-            <br>
-            <label for="interests">Food</label>
-            <input type="checkbox" id="food" name="food" data-interest="food" unchecked>
-            <br>
-            <label for="interests">Events</label>
-            <input type="checkbox" id="events" name="events" data-interest="events" unchecked>
-        </div>
-        <div>
-            <input type="submit" id="submit">
-            <input type="reset" id="reset">
-        </div>
-    </form>
-</body>
-<!-- DOM/JS scripting -->
-<script>
-    // tells the DOM to run the interior code when the page has loaded
-    window.addEventListener("DOMContentLoaded", function(e) {
-
-// event variables
-
-        // creates a variable container for the form submit button
-        const submit = document.getElementById("submit");
-
-        // creates a variable container for form inputs of data-interests type
-        const interestSelection = document.querySelectorAll("input[data-interest]");
-
-        // initializes an array for use in function below 
-        const interestArray = [];
-
-        // creates variable for stops number input
-        const stops = document.querySelector("input[data-stops]");
-
-        // creates variables for prices radio buttons input
-        const prices = document.querySelectorAll("input[data-cost]");
-
-        // blank data object for user preferences
-        const preferences = {
-        location: "",
-        stops: "",
-        cost: ""
-        };
-
-// event listeners
-
-        // loops through each interest using a callback function
-        interestSelection.forEach(function(input){
-
-            // click-event listener for interests
-            input.addEventListener("click", function(e){
-
-                // creates variable container for a clicked checkbox
-                const selection = e.currentTarget;
-
-                // creates variable containers to retrieve clicked checkbox's data-interest value and id value
-                const interest = selection.getAttribute("data-interest");
-                const interestId = selection.getAttribute("id");
-
-                if (interestArray.includes(interestId)){
-                    const cut = interestArray.indexOf(interestId);
-                    interestArray.splice(cut, 1);
-                    console.log(interestArray);
-                    return interestArray;
-                } else {
-                    interestArray.push(interestId);
-                    console.log(interestArray);
-                    return interestArray;
-                };
-                return interestArray;
-            });
-        });
-
-        prices.forEach(function(radio){
-            radio.addEventListener("click", function(e){
-                preferences["cost"] = e.currentTarget.value;
-                });
-            });
-
-        // creates submit button even listener
-        submit.addEventListener("click", function(e){
-            
-            // adds user selected values for stops and location to preferences array 
-            preferences["stops"] = stops.value;
-            preferences["location"]=document.querySelector("input[data-location]").value;
-
-            localStorage.setItem("preferences", JSON.stringify(preferences));
-
-            // on click, local storage saves returned array from above function
-            localStorage.setItem("interests", JSON.stringify(interestArray));
-            
-            // creates variable container that change URLs on submit
-            const goToProfile = window.location.href.replace("dd_make_itinerary.html", "dd_user_profile.html");
-
-            // changes window to profile URL
-            window.location.href = goToProfile;
-        });
-
-    });
-
-</script>
+    <!-- interests checkboxes -->
+            <div>
+                <label><strong>Select your interests:</strong></label>
+                <br>
+                <label for="interests">Visual Arts</label>
+                <input type="checkbox" id="art" name="art" data-interest="art" unchecked>
+                <br>
+                <label for="interests">Music</label>
+                <input type="checkbox" id="music" name="music" data-interest="music" unchecked>
+                <br>
+                <label for="interests">Nature/Outdoors</label>
+                <input type="checkbox" id="nature" name="nature" data-interest="nature" unchecked>
+                <br>
+                <label for="interests">Gaming</label>
+                <input type="checkbox" id="gaming" name="gaming" data-interest="gaming" unchecked>
+                <br>
+                <label for="interests">Sports</label>
+                <input type="checkbox" id="sports" name="sports" data-interest="sports" unchecked>
+                <br>
+                <label for="interests">Night Life</label>
+                <input type="checkbox" id="night" name="night" data-interest="night" unchecked>
+                <br>
+                <label for="interests">History</label>
+                <input type="checkbox" id="history" name="history" data-interest="history" unchecked>
+                <br>
+                <label for="interests">Science/Technology</label>
+                <input type="checkbox" id="science" name="science" data-interest="science" unchecked>
+                <br>
+                <label for="interests">Culture</label>
+                <input type="checkbox" id="culture" name="culture" data-interest="culture" unchecked>
+                <br>
+                <label for="interests">Fashion</label>
+                <input type="checkbox" id="fashion" name="fashion" data-interest="fashion" unchecked>
+                <br>
+                <label for="interests">Books</label>
+                <input type="checkbox" id="books" name="books" data-interest="books" unchecked>
+                <br>
+                <label for="interests">Movies/Film</label>
+                <input type="checkbox" id="movies" name="movies" data-interest="movies" unchecked>
+                <br>
+                <label for="interests">Health/Wellness</label>
+                <input type="checkbox" id="health" name="health" data-interest="health" unchecked>
+                <br>
+                <label for="interests">Food</label>
+                <input type="checkbox" id="food" name="food" data-interest="food" unchecked>
+                <br>
+                <label for="interests">Events</label>
+                <input type="checkbox" id="events" name="events" data-interest="events" unchecked>
+            </div>
+            <div>
+                <input type="submit" id="submit">
+                <input type="reset" id="reset">
+            </div>
+        </form>
+    </body>
 </html>

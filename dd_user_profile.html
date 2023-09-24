@@ -8,38 +8,15 @@
 <body>
     <header>
         <a href="dd_sitemap.html">Sitemap</a>
-
     </header>
     <h1>Welcome to your profile</h1>
     <h2 class="selections">Your selections: </h2>
+    <div class="interests" data-interests="userInterests" style="color:blue">Interests: </div>
+    <div class="preferences" data-preferences="userPreferences" style="color:red">Preferences: </div>
     
 </body>
 <script>
     window.addEventListener("DOMContentLoaded", function(load){
-        
-        // function addDiv(){
-        //     const newDiv = document.createElement("div");
-        // };
-
-        // function addDivWithAttr(attName, attValue, parent){
-        //     const newDiv = document.createElement("div");
-        //     const addAtt = newDiv.setAttribute(attName, attValue);
-        //     parent.append(newDiv);
-        // }
-
-        // function addLI(item, parent){
-        //     const newLI = document.createElement("li");
-        //     newLI.innerText(item);
-        //     parent.append(newLI);
-        // }
-
-        // function addULwithHeader(listName, itemList, parent){
-        //     const newList = document.createElement("ul");
-        //     newList.setAttribute("class", listName);
-        //     const addHead = document.createElement("h3");
-        //     addHead.innerText(listName);
-        //     itemList.forEach(addLI(item, newList));
-        // }
 
         // interests retrieval container
         const userInterests = localStorage.getItem("interests");
@@ -47,36 +24,50 @@
 
         // preferences retrieval container
         const userPreferences = localStorage.getItem("preferences");
+        // const userPreferences = localStorage.getItem(JSON.parse("preferences"));
         console.log(userPreferences);
 
-        // creates variable for parent element to use as parameter
-        const selectionsHead = document.querySelector(".selections");
+        if ( userInterests.isEmpty() ) {
+            userInterests.value = "an error has occurred: value empty"
+            return userInterests;
+        }
+
+        const interestsArr = userInterests.split(',');
+        const interestsDiv = document.querySelector("[data-interests]");
+        const interestsList = document.createElement("ul");
+        interestsList.setAttribute("class", "userInterests");
+        interestsDiv.appendChild(interestsList);
+
+        for ( let i = 0; i < interestsArr.length; i++ ) {
+
+        const showItem = document.createElement("li");
+        showItem.textContent = interestsArr[i];
+        interestsList.appendChild(showItem);
+
+        }
+
+        const prefsDiv = document.querySelector("[data-preferences]");
+        const prefsList = document.createElement("ul");
+        prefsList.setAttribute("class", "userPreferences");
+        prefsDiv.appendChild(prefsList);
 
 
-        const newDivInts = document.createElement("div");
-        const addAttInts = newDivInts.setAttribute("class", "interests");
-        selectionsHead.append(newDivInts);
 
-        const newList = document.createElement("ul");
-        newList.setAttribute("class", userInterests);
-        const addHead = document.createElement("h3");
-        // addHead.innerText(userInterests);
+        const costPref = document.createElement("li");
+        costPref.textContent = userPreferences.cost;
 
 
-        const newDivPrefs = document.createElement("div");
-        const addAttPrefs = newDivPrefs.setAttribute("class", "preferences");
-        selectionsHead.append(newDivPrefs);
+
+        const locationPref = document.createElement("li");
+        locationPref.textContent = userPreferences["userLocation"];
 
 
-        // creates variable calling function to add div (new parent) for interests
-        // const interestsDiv = addDivWithAttr("class", "interests", selectionsHead);
 
-        // creates variable calling function to add div (new parent) for preferences
-        // const preferencesDiv = addDivWithAttr("class", "preferences", selectionsHead);
+        const stopsPref = document.createElement("li");
+        costPref.textContent = userPreferences["stops"];
 
-        // addULwithHeader("Preferences", userPreferences, preferencesDiv);
 
-        // addULwithHeader("Interests", userInterests, interestsDiv);
+        prefsList.appendChild(costPref);
 
     })
 </script>
