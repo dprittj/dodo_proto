@@ -1,37 +1,56 @@
 
-function elementFromHTML(html){
+function displayInterests(userInts){
 
-    const template = document.createElement("template");
-    template.innerHTML=html.trim();
-    const newElement = template.content.firstElementChild;
-    return newElement;
+    // separates interests
+    const interestsArr = userInts.split(',');
 
-}
+    // finds div for interests list
+    const interestsDiv = document.querySelector("[data-interests]");
 
-function displayInterests(array){
+    // creates list for above div, sets class attribute, and appends to div
+    const interestsList = document.createElement("ul");
+    interestsList.setAttribute("class", "userInterests");
+    interestsDiv.appendChild(interestsList);
 
-    const thisArray = array;
-    const createUL = document.createElement("ul");
-    const createLI = document.createElement("li");
-    let itemsNum = array.length();
-
-    for (let i = 0; i < itemsNum; i++) {
-        let li = document.createElement("li");
-        let liString = thisArray[i];
-
+    // iterates through interests and adds each to list
+    for ( let i = 0; i < interestsArr.length; i++ ) {
+            const showItem = document.createElement("li");
+            showItem.textContent = interestsArr[i];
+            interestsList.appendChild(showItem);
     }
-    
 
 }
 
+window.addEventListener("DOMContentLoaded", function(load){
 
-const interestsArr = localStorage.getItem("interests").split(',');
+    // interests, preferences retrieval
+    const userInterests = localStorage.getItem("interests");
+    const userPreferences = localStorage.getItem("preferences");
+    console.log(userInterests, typeof userInterests)
+    console.log(userPreferences, typeof userPreferences);
 
-const interestsList = document.createElement("li");
-interestsList.setAttribute("class", "userInterests");
+    displayInterests(userInterests);
 
-for ( let i = 0; i < interestsArr.length; i++ ) {
-    const showItem = document.createElement("li");
-    showItem.textContent(interestsArr[i]);
-    interestsList.appendChild(showItem);
-}
+    const parsedPrefs = JSON.parse(userPreferences);
+    console.log(parsedPrefs);
+
+
+    const prefsDiv = document.querySelector("[data-preferences]");
+    const prefsList = document.createElement("ul");
+    prefsList.setAttribute("class", "userPreferences");
+    prefsDiv.appendChild(prefsList);
+
+    const costPref = document.createElement("li");
+    costPref.textContent = parsedPrefs.cost;
+
+    const locationPref = document.createElement("li");
+    locationPref.textContent = parsedPrefs["userLocation"];
+
+    const stopsPref = document.createElement("li");
+    stopsPref.textContent = parsedPrefs["stops"];
+
+    prefsList.appendChild(locationPref);
+    prefsList.appendChild(costPref);
+    prefsList.appendChild(stopsPref);
+
+})

@@ -1,74 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DODO User Profile</title>
-</head>
-<body>
-    <header>
-        <a href="dd_sitemap.html">Sitemap</a>
-    </header>
-    <h1>Welcome to your profile</h1>
-    <h2 class="selections">Your selections: </h2>
-    <div class="interests" data-interests="userInterests" style="color:blue">Interests: </div>
-    <div class="preferences" data-preferences="userPreferences" style="color:red">Preferences: </div>
-    
-</body>
-<script>
-    window.addEventListener("DOMContentLoaded", function(load){
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DODO User Profile</title>
+        <script src="displayOptions.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href="dd_sitemap.html">Sitemap</a>
+        </header>
 
-        // interests retrieval container
-        const userInterests = localStorage.getItem("interests");
-        console.log(userInterests);
+        <h1>Welcome to your profile</h1>
 
-        // preferences retrieval container
-        const userPreferences = localStorage.getItem("preferences");
-        // const userPreferences = localStorage.getItem(JSON.parse("preferences"));
-        console.log(userPreferences);
+        <h2 class="selections">Your selections: </h2>
 
-        if ( userInterests.isEmpty() ) {
-            userInterests.value = "an error has occurred: value empty"
-            return userInterests;
-        }
-
-        const interestsArr = userInterests.split(',');
-        const interestsDiv = document.querySelector("[data-interests]");
-        const interestsList = document.createElement("ul");
-        interestsList.setAttribute("class", "userInterests");
-        interestsDiv.appendChild(interestsList);
-
-        for ( let i = 0; i < interestsArr.length; i++ ) {
-
-        const showItem = document.createElement("li");
-        showItem.textContent = interestsArr[i];
-        interestsList.appendChild(showItem);
-
-        }
-
-        const prefsDiv = document.querySelector("[data-preferences]");
-        const prefsList = document.createElement("ul");
-        prefsList.setAttribute("class", "userPreferences");
-        prefsDiv.appendChild(prefsList);
-
-
-
-        const costPref = document.createElement("li");
-        costPref.textContent = userPreferences.cost;
-
-
-
-        const locationPref = document.createElement("li");
-        locationPref.textContent = userPreferences["userLocation"];
-
-
-
-        const stopsPref = document.createElement("li");
-        costPref.textContent = userPreferences["stops"];
-
-
-        prefsList.appendChild(costPref);
-
-    })
-</script>
+        <div class="interests" data-interests="userInterests" style="color:blue">Interests: </div>
+        
+        <div class="preferences" data-preferences="userPreferences" style="color:red">Preferences: </div>
+        
+    </body>
 </html>
