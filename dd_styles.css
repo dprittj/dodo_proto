@@ -20,6 +20,16 @@ h1 {
     visibility: hidden;
 }
 
+.login {
+    display: block;
+    background-color: aquamarine;
+    text-align: center;
+}
+
+.login:hover{
+    translate: -200px;
+    transition: 3s;
+}
 
 .nav {
     background-color: lavender;
