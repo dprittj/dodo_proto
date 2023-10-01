@@ -3,6 +3,24 @@
 
 }
 
+section {
+    display: flex;
+}
+
+div {
+    margin: 30px;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 300%;
+}
+
+.bumperdiv {
+    visibility: hidden;
+}
+
+
 .nav {
     background-color: lavender;
     height: 30px;
