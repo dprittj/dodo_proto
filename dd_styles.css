@@ -1,35 +1,11 @@
+
+/* global */
+
 * {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
 }
 
-section {
-    display: flex;
-}
-
-div {
-    margin: 30px;
-    padding: 10px;
-}
-
-h1 {
-    font-size: 300%;
-}
-
-.bumperdiv {
-    visibility: hidden;
-}
-
-.login {
-    display: block;
-    background-color: aquamarine;
-    text-align: center;
-}
-
-.login:hover{
-    translate: -200px;
-    transition: 3s;
-}
+/* navigation */
 
 .nav {
     background-color: lavender;
@@ -56,3 +32,58 @@ h1 {
   color: goldenrod;
   transition: all 0.3s ease-out;
 }
+
+/* main/top */
+
+section {
+    display: flex;
+}
+
+h1 {
+    font-size: 300%;
+}
+
+.bumperdiv {
+    visibility: hidden;
+    flex: 3;
+    margin: 20px;
+    padding: 10px;
+}
+
+.loginRegister {
+    display: block;
+}
+
+.login, .register {
+    background-color: aquamarine;
+    text-align: center; 
+}
+
+.loginHeard {
+    background-color: aquamarine;
+    text-align: center;
+    transform: translate(0, -500px);
+    transition: .9s;
+}
+
+.heard {
+    transform: translate(0, -500px);
+    color: white;
+    transition: 1.2s;
+}
+
+/* main/bottom */
+
+.frontmiddle{
+    visibility: hidden;
+    text-align: center;
+}
+
+.frontmiddleheard {
+    text-align: center;
+    transform: translate(0, -275px);
+    transition: ease-in 1s;
+}
+
+/* form */
+
