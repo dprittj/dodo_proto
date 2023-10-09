@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", function(load){
         dodoPass: ""
     };
     
-    const submit = document.getElementById("submit");
+    const submit = document.getElementById("goButton");
 
     const login = document.getElementById("login");
 
@@ -19,17 +19,27 @@ window.addEventListener("DOMContentLoaded", function(load){
 
     const cont = document.getElementById("continue");
 
-    login.addEventListener("mouseenter", function(e){
+    login.addEventListener("click", function(e){
 
         login.setAttribute("class", "loginHeard");
-        or.setAttribute("class", "heard");
-        register.setAttribute("class", "heard");
-        cont.setAttribute("class", "heard");
+        or.setAttribute("class", "loginHeard");
+        register.setAttribute("class", "loginHeard");
+        cont.setAttribute("class", "loginHeard");
 
-        const bottom = document.querySelector('.frontmiddle');
-        bottom.setAttribute("class", "frontmiddleheard");
+        const loginForm = document.getElementById("loginForm");
+        loginForm.setAttribute("id", "loginBumperHeard");
 
-        ddUser.focus({focusVisibility: true}).preventDefault();
+    });
+
+    register.addEventListener("click", function(e){
+
+        login.setAttribute("class", "registerHeard");
+        or.setAttribute("class", "registerHeard");
+        register.setAttribute("class", "registerHeard");
+        cont.setAttribute("class", "registerHeard");
+
+        const regForm = document.getElementById("registerForm");
+        regForm.setAttribute("id", "registerBumperHeard");
 
     });
 
