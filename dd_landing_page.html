@@ -18,83 +18,86 @@
 
     </header>
     <section>
-
-        <div class="landingdiv" id="registerForm">
-            <form action="" method="">
-                <div>
-                    <label for="username">Username:</label>
+        <div class="landingDiv" id="registerForm">
+            <div class="hiddenDiv" id="registerDiv">
+                <form action="" method="">
+                    <div>
+                        <label for="username">Username:</label>
+                        <br>
+                        <input type="text" id="username" name="username" placeholder="username" required>
+                    </div>
                     <br>
-                    <input type="text" id="username" name="username" placeholder="username" required>
-                </div>
-                <br>
-                <div>
-                    <label for="password">Password:</label>
+                    <div>
+                        <label for="password">Password:</label>
+                        <br>
+                        <input type="password" id="pass" name="pass" maxlength="16" placeholder="password" required>
+                    </div>
                     <br>
-                    <input type="password" id="pass" name="pass" maxlength="16" placeholder="password" required>
-                </div>
-                <br>
-                <div>
-                    <label for="email">Email Address:</label>
+                    <div>
+                        <label for="email">Email Address:</label>
+                        <br>
+                        <input type="email" id="email" name="email" placeholder="email@domain.com" required>
+                    </div>
                     <br>
-                    <input type="email" id="email" name="email" placeholder="email@domain.com" required>
-                </div>
-                <br>
-                <div>
-                    <label for="phone">Phone #:</label>
+                    <div>
+                        <label for="phone">Phone #:</label>
+                        <br>
+                        <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required>
+                    </div>
                     <br>
-                    <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required>
-                </div>
-                <br>
-                <div>
-                    <label for="birthdate">Date of Birth:</label>
+                    <div>
+                        <label for="birthdate">Date of Birth:</label>
+                        <br>
+                        <input type="date" id="birth" name="birth" required>
+                    </div>
                     <br>
-                    <input type="date" id="birth" name="birth" required>
-                </div>
-                <br>
-                <div>
-                    <label for="location">Location:</label>
+                    <div>
+                        <label for="location">Location:</label>
+                        <br>
+                        <input type="text" id="coords" name="coords" placeholder="Big City, USA" required>
+                    </div>
                     <br>
-                    <input type="text" id="coords" name="coords" placeholder="Big City, USA" required>
-                </div>
-                <br>
-                <div>
-                    <button type="submit" id="registerButton">Register</button>
-                    <br>
-                    <button type="reset" id=""resetButton>Reset</button>
-                </div>
-            </form>
+                    <div>
+                        <button type="submit" id="submitRegistration">Register</button>
+                        <br>
+                        <button type="reset" id=""resetButton>Reset</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <div class="landingdiv" id="loginRegister">
-            <!-- <a href="dd_login.html">Login</a> -->
-            <button class="login" id="login">Login</button>
-            <!-- <h1 class="login" id="login">Login</h1> -->
-            <h4 id="or" class="or">or</h4>
-            <button id="register" class="register">Register</button>
-            <h3 id="continue" class="continue">to continue</h3>
+        <div class="landingDiv" id="visibleDiv">
+                <button type="button" class="login" id="loginButton">Login</button>
+                <br>
+                <h4 id="or" class="or">or</h4>
+                <button type="button" class="register" id="registerButton">Register</button>
+                <h3 id="continue" class="continue">to continue</h3>
         </div>
 
-        <div class="landingdiv" id="loginForm">
-            <form action="" method="">
-                <div>
+        <div class="landingDiv" id="loginForm">
+            <div class="hiddenDiv" id="loginDiv">
+                <form action="" method="">
+                    <div>
+                        <br>
+                        <label for="username" id="form-text">Username:</label>
+                        <br>
+                        <input type="text" id="username" name="username" placeholder="username" required>
+                    </div>
                     <br>
-                    <label for="username" id="form-text">Username:</label>
+                    <div>
+                        <label for="password" id="form-text">Password:</label>
+                        <br>
+                        <input type="password" id="pass" name="pass" maxlength="16" placeholder="password" required>
+                    </div>
                     <br>
-                    <input type="text" id="username" name="username" placeholder="username" required>
-                </div>
-                <br>
-                <div>
-                    <label for="password" id="form-text">Password:</label>
-                    <br>
-                    <input type="password" id="pass" name="pass" maxlength="16" placeholder="password" required>
-                </div>
-                <br>
-                <div>
-                    <button type="submit" id="goButton">Go</button>
-                    <br>
-                    <button type="reset" id="resetButton">Reset</button>
-                </div>
-            </form>
+                    <div>
+                        <button type="submit" id="goButton">Go</button>
+                        <br>
+                        <button type="reset" id="resetButton">Reset</button>
+                    </div>
+                </form>
+            </div>
         </div>
+    </section>
 </body>
 </html>
