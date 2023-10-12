@@ -19,48 +19,48 @@
     </header>
     <section>
         <div class="landingDiv" id="registerForm">
-            <div class="hiddenDiv" id="registerDiv">
-                <form action="" method="">
+            <div class="hiddenDiv1" id="registerDiv">
+                <form action="" method="" name="registerFields">
                     <div>
                         <label for="username">Username:</label>
                         <br>
-                        <input type="text" id="username" name="username" placeholder="username" required>
+                        <input type="text" id="username" name="username" placeholder="username" data-newName="newName" required>
                     </div>
                     <br>
                     <div>
                         <label for="password">Password:</label>
                         <br>
-                        <input type="password" id="pass" name="pass" maxlength="16" placeholder="password" required>
+                        <input type="password" id="pass" name="pass" maxlength="16" placeholder="password" data-newPass="newPass" required>
                     </div>
                     <br>
                     <div>
                         <label for="email">Email Address:</label>
                         <br>
-                        <input type="email" id="email" name="email" placeholder="email@domain.com" required>
+                        <input type="email" id="email" name="email" placeholder="email@domain.com" data-email="email" required>
                     </div>
                     <br>
                     <div>
                         <label for="phone">Phone #:</label>
                         <br>
-                        <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required>
+                        <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" data-phone="phone" required>
                     </div>
                     <br>
                     <div>
                         <label for="birthdate">Date of Birth:</label>
                         <br>
-                        <input type="date" id="birth" name="birth" required>
+                        <input type="date" id="birth" name="birth" data-birth="birth" required>
                     </div>
                     <br>
                     <div>
                         <label for="location">Location:</label>
                         <br>
-                        <input type="text" id="coords" name="coords" placeholder="Big City, USA" required>
+                        <input type="text" id="coords" name="coords" placeholder="Big City, USA" data-coords="coords" required>
                     </div>
                     <br>
                     <div>
                         <button type="submit" id="submitRegistration">Register</button>
                         <br>
-                        <button type="reset" id=""resetButton>Reset</button>
+                        <button type="reset" id="reset" resetButton>Reset</button>
                     </div>
                 </form>
             </div>
@@ -75,19 +75,19 @@
         </div>
 
         <div class="landingDiv" id="loginForm">
-            <div class="hiddenDiv" id="loginDiv">
-                <form action="" method="">
+            <div class="hiddenDiv2" id="loginDiv">
+                <form action="" method="" name="loginFields">
                     <div>
                         <br>
                         <label for="username" id="form-text">Username:</label>
                         <br>
-                        <input type="text" id="username" name="username" placeholder="username" required>
+                        <input type="text" id="username" name="username" placeholder="username" data-name="name" required>
                     </div>
                     <br>
                     <div>
                         <label for="password" id="form-text">Password:</label>
                         <br>
-                        <input type="password" id="pass" name="pass" maxlength="16" placeholder="password" required>
+                        <input type="password" id="pass" name="pass" maxlength="16" placeholder="password" data-pass="pass" required>
                     </div>
                     <br>
                     <div>

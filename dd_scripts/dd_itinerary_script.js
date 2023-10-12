@@ -1,6 +1,6 @@
 
 // tells the DOM to run the interior code when the page has loaded
-window.addEventListener("DOMContentLoaded", function(e) {
+window.addEventListener("load", function(e) {
 
 // event variables
 
@@ -21,9 +21,9 @@ window.addEventListener("DOMContentLoaded", function(e) {
 
     // blank data object for user preferences
     const preferences = {
-    userLocation: "",
-    stops: "",
-    cost: ""
+        userLocation: "",
+        stops: "",
+        cost: ""
     };
 
 
